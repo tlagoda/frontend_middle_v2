@@ -6,6 +6,11 @@ import "./Cart.css";
 function Cart() {
   const { beersOrdered } = useBeer();
 
+  useEffect(() => {
+    // changement du titre du document
+    document.title = "Beer Market | Cart";
+  }, []);
+
   // gestion d'un panier vide
   if (beersOrdered.length < 1) {
     return <p>Your cart is empty.</p>;

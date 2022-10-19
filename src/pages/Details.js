@@ -7,6 +7,11 @@ function Details() {
   const location = useLocation();
   const beer = location.state;
 
+  useEffect(() => {
+    // changement du titre du document
+    document.title = `Beer Market | ${beer.name}`
+  }, [])
+
   return (
     <div className="details-wrapper">
       <h1>{beer.name}</h1>

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./BeerList.css";
 import BeerCard from "../components/BeerCard";
 import { useBeer } from "../context/beerContext";
 
 function BeerList() {
   const { beers, pageToDisplay, setPageToDisplay } = useBeer();
+
+  useEffect(() => {
+    // changement du titre du document
+    document.title = "Beer Market | Our beers";
+  }, []);
 
   // retour en haut de page et affichage de la page précédente
   const handlePrevious = () => {
