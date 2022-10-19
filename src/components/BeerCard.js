@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useBeer } from "../context/beerContext";
+import toast, { Toaster } from "react-hot-toast";
 import "./BeerCard.css";
 
 function BeerCard({ beer }) {
@@ -27,6 +28,24 @@ function BeerCard({ beer }) {
     }
   }, [beersOrdered]);
 
+  const handleAdd = (id) => {
+    addBeerToCart(beer.id);
+    notify();
+  };
+
+  // configuration et création du toast de react-hot-toast
+
+  const notify = () =>
+    toast.success("Beer added to cart!", {
+      style: {
+        backgroundColor: "#8E8D71",
+        color: "white",
+      },
+      icon: "🍺",
+      position: "bottom-right",
+      duration: 1500,
+    });
+
   return (
     <div className="beer-card">
       <h2>{beer.name}</h2>
@@ -39,10 +58,11 @@ function BeerCard({ beer }) {
         Details
       </Link>
       <div className="add-remove-div">
-        <button onClick={() => addBeerToCart(beer.id)}>+</button>
+        <button onClick={handleAdd}>+</button>
         <span>{quantityOrdered}</span>
         <button onClick={() => removeBeerFromCart(beer.id)}>-</button>
       </div>
+      <Toaster />
     </div>
   );
 }
