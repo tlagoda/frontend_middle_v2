@@ -15,7 +15,7 @@ function BeerList() {
   const handlePrevious = () => {
     if (pageToDisplay > 1) {
       window.scrollTo(0, 0);
-      setPageToDisplay(pageToDisplay - 1);
+      setPageToDisplay(pageToDisplay - 1); 
     }
     return;
   };
